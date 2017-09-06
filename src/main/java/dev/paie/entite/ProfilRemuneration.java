@@ -2,16 +2,16 @@ package dev.paie.entite;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 public class ProfilRemuneration {
 
 	private Integer id;
 	private String code;
-
+	
 	private List<Cotisation> cotisationsNonImposables;
-	
 	private List<Cotisation> cotisationsImposables;
-	
 	private List<Avantage> avantages;
 
 	public Integer getId() {

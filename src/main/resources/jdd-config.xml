@@ -10,7 +10,7 @@
 	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
 		<property name="remunerationEmploye" ref="remuneration1"></property>
 		<!-- <property name="periode" value="URSSAF MALADIE - MATERNITE - INVALIDITE"></property> -->
-		<property name="primeExceptionnelle" value="900"></property>
+		<property name="primeExceptionnelle" value="1000"></property>
 	</bean>
 
 	<bean id="remuneration1" class="dev.paie.entite.RemunerationEmploye">

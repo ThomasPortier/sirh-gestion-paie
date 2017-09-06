@@ -1,10 +1,11 @@
 package dev.paie.utils;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
-import java.util.List;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.After;
@@ -27,7 +28,7 @@ public class JeuxDeDonneesTest {
 
 	@Test
 	public void test_primeExceptionnelle() {
-		assertThat(bulletin1.getPrimeExceptionnelle(), equalTo(new BigDecimal("900")));
+		assertThat(bulletin1.getPrimeExceptionnelle(), equalTo(new BigDecimal("1000")));
 	}
 
 	@Test
