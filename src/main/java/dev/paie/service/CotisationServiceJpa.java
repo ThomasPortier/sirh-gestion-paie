@@ -4,40 +4,46 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.Cotisation;
-import dev.paie.entite.Grade;
 
+@EnableTransactionManagement
+@Service
 public class CotisationServiceJpa implements CotisationService {
-	
-	@PersistenceContext private EntityManager em;
 
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
+	@Transactional
 	public void sauvegarder(Cotisation nouvelleCotisation) {
-		Grade unGrade = new Grade("Voila", new BigDecimal(532.56), new BigDecimal(32.89));
-		em.getTransaction().begin();
-		em.persist(unGrade);
-		em.getTransaction().commit();
-		// TODO Auto-generated method stub
-
+		em.persist(nouvelleCotisation);
 	}
 
 	@Override
-	public void mettreAJour(Cotisation cotisation) {
+	@Transactional
+	public void mettreAJour(Cotisation uneCotisation) {
+		 Cotisation uneCotisationToUpdate= (Cotisation)em.find(Cotisation.class ,uneCotisation.getId());
+		 uneCotisationToUpdate.setLibelle("Updated libelle");
+		 uneCotisationToUpdate.setTauxPatronal(new BigDecimal(888.88));
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
+	@Transactional
 	public List<Cotisation> lister() {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<Cotisation> query = em.createQuery("from Cotisation", Cotisation.class);
+		List<Cotisation> listeCotisation = (query.getResultList());
+		for (Cotisation indexCotisation : listeCotisation) {
+			System.out.println(indexCotisation);
+		}
+		return query.getResultList();
 	}
 
 }

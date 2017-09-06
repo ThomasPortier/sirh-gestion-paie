@@ -22,6 +22,7 @@ public class GradeServiceJdbcTemplateTest {
 	@Autowired
 	private GradeService gradeService;
 	
+	
 	       
 	
 	@Test

@@ -7,6 +7,28 @@
 	<import resource="classpath:cotisations-imposables.xml" />
 	<import resource="classpath:cotisations-non-imposables.xml" />
 
+
+	<bean id="hgfd" class="java.util.ArrayList">
+		<constructor-arg>
+			<util:list value-type="dev.paie.entite.Cotisation">
+				<ref bean="ep01" />
+				<ref bean="ep02" />
+				<ref bean="ep03" />
+				<ref bean="ep04" />
+				<ref bean="ep05" />
+				<ref bean="ep06" />
+				<ref bean="ep07" />
+				<ref bean="ep12" />
+				<ref bean="ep19" />
+				<ref bean="ep20" />
+				<ref bean="epr1" />
+				<ref bean="e900" />
+				<ref bean="ep28" />
+				<ref bean="ep37" />
+			</util:list>
+		</constructor-arg>
+	</bean>
+
 	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
 		<property name="remunerationEmploye" ref="remuneration1"></property>
 		<!-- <property name="periode" value="URSSAF MALADIE - MATERNITE - INVALIDITE"></property> -->

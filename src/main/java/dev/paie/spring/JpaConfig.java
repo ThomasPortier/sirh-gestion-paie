@@ -11,8 +11,10 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableTransactionManagement
 @ComponentScan({"dev.paie.service","dev.paie.util"})
 public class JpaConfig {
 
@@ -25,7 +27,7 @@ public class JpaConfig {
 		dataSource.setPassword("root");
 		return dataSource;
 	}*/
-
+	
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
 		JpaTransactionManager txManager = new JpaTransactionManager();
