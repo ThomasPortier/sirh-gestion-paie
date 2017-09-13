@@ -1,20 +1,40 @@
 package dev.paie.entite;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-@Component
+
+
+@Entity
 public class RemunerationEmploye {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String matricule;
-	@Autowired
+	@OneToOne
 	private Entreprise entreprise;
-	@Autowired
+	@OneToOne
 	private ProfilRemuneration profilRemuneration;
-	@Autowired
+	@OneToOne
 	private Grade grade;
 	
+	
+	
+	public RemunerationEmploye() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public RemunerationEmploye(String matricule, Entreprise entreprise, ProfilRemuneration profilRemuneration,
+			Grade grade) {
+		super();
+		this.matricule = matricule;
+		this.entreprise = entreprise;
+		this.profilRemuneration = profilRemuneration;
+		this.grade = grade;
+	}
 	public String getMatricule() {
 		return matricule;
 	}

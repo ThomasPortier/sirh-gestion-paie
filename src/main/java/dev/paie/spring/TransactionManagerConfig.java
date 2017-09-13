@@ -13,10 +13,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"dev.paie.service","dev.paie.util"})
-public class JpaConfig {
+public class TransactionManagerConfig {
 
 /*	@Bean
 	public DataSource dataSource() {
@@ -35,7 +35,7 @@ public class JpaConfig {
 		return txManager;
 	}
 
-	@Bean
+	/*@Bean
 	// Cette configuration nécessite une source de données configurée.
 	// Elle s'utilise donc en association avec un autre fichier de configuration
 	// définissant unbean DataSource.
@@ -52,5 +52,5 @@ public class JpaConfig {
 		factory.setDataSource(dataSource);
 		factory.afterPropertiesSet();
 		return factory.getObject();
-	}
+	}*/
 }

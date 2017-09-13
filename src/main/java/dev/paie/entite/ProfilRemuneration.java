@@ -2,18 +2,39 @@ package dev.paie.entite;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
+@Entity
 public class ProfilRemuneration {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String code;
 	
+	@ManyToMany
+	@JoinTable(name= "ProfilRem_Cot_Not_Imp",
+	joinColumns = @JoinColumn(name = "ID_ProfilRem", referencedColumnName = "ID"),
+	inverseJoinColumns = @JoinColumn(name = "Cot_ID", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsNonImposables;
+	
+	@ManyToMany
+	@JoinTable(name= "ProfilRem_Cot_Imp",
+	joinColumns = @JoinColumn(name = "ID_ProfilRem", referencedColumnName = "ID"),
+	inverseJoinColumns = @JoinColumn(name = "Cot_ID", referencedColumnName = "ID"))
 	private List<Cotisation> cotisationsImposables;
+	@OneToMany
 	private List<Avantage> avantages;
 
+	
+	
 	public Integer getId() {
 		return id;
 	}

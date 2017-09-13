@@ -15,9 +15,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import dev.paie.entite.Cotisation;
 import dev.paie.entite.Grade;
 import dev.paie.spring.DataSourceMySQLConfig;
-import dev.paie.spring.JpaConfig;
+import dev.paie.spring.EntityManagerConfig;
+import dev.paie.spring.TransactionManagerConfig;
 
-@ContextConfiguration(classes = { JpaConfig.class, DataSourceMySQLConfig.class })
+@ContextConfiguration(classes = { DataSourceMySQLConfig.class, EntityManagerConfig.class, TransactionManagerConfig.class })
 // TODO compléter la configuration
 @RunWith(SpringRunner.class)
 public class CotisationServiceJpaTest {
