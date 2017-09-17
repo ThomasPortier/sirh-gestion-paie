@@ -3,10 +3,9 @@ package dev.paie.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import dev.paie.entite.Grade;
-import dev.paie.entite.Periode;
+import dev.paie.entite.BulletinSalaire;
 
 @Repository
-public interface PeriodeRepository extends JpaRepository<Periode, Integer> {
+public interface BulletinSalaireRepository extends JpaRepository<BulletinSalaire, Integer> {
 
 }

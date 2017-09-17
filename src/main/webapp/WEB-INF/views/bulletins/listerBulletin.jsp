@@ -28,20 +28,28 @@ tr:nth-child(even) {
 <title>Liste Employe(e)s</title>
 </head>
 <body>
-<a href=http://localhost:8080/paie>Accueil</a> - 
-<a href=request.getContextPath()+"/mvc/employes/creer">Creer Employe</a>
+	<a href=http://localhost:8080/paie>Accueil</a> -
+	<a href=request.getContextPath()+"/mvc/employes/creer">Creer
+		Employe</a>
 	<center>
 		<table>
 			<tr>
-				<th>Employes</th>
-				<th>Entreprise</th>
-				<th>Grade de Remuneration</th>
+				<th>Periodes</th>
+				<th>Matricule</th>
+				<th>Prime Exceptionnelle</th>
+				<th>Salaire Brut</th>
+				<th>Net Imposable</th>
+				<th>Net a Payer</th>
 			</tr>
-			<c:forEach items="${listeRemunerationEmploye}" var="unEmploye">
+			<c:forEach items="${listeBulletinSalaire}" var="unBulletin">
 				<tr>
-					<td>${unEmploye.matricule}</td>
-					<td>${unEmploye.entreprise.denomination}</td>
-					<td>${unEmploye.grade.code}</td>
+					<td>${unBulletin.periode.dateDebut}-
+						${unBulletin.periode.dateFin}</td>
+					<td>${unBulletin.remunerationEmploye.matricule}</td>
+					<td>${unBulletin.primeExceptionnelle}</td>
+					<td> XXXX </td>
+					<td> XXXX </td>
+					<td> XXXX </td>
 				</tr>
 				</option>
 				<br>

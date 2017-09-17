@@ -15,22 +15,22 @@
 <body>
 	<a href=http://localhost:8080/paie>Accueil</a>
 	<center>
-		<h1>Créer Employé(e)</h1>
+		<h1>Création d'un bulletin </h1>
 		<form
-			action="<%=request.getContextPath()%>/mvc/employes/validerFormBulletin"
+			action="<%=request.getContextPath()%>/mvc/bulletins/validerFormBulletin"
 			method="post">
 
 
-			<br>Profil <select name="entrepriseId"> -->
-				<c:forEach items="${listePeriode}" var="unePeriode">
-					<option value="${unePeriode.id}">${unePeriode.dateDebut - unePeriode.dateFin}</option>
+			<br>Periode <select name="periodeId"> 
+				<c:forEach items="${listePeriodes}" var="unePeriode">
+					<option value="${unePeriode.id}">${unePeriode.dateDebut} - ${unePeriode.dateFin}</option>
 				</c:forEach>
-			</select> <br> <br>Profil <select name="profilId"> -->
+			</select> <br> <br>Matricule <select name="remunerationId"> 
 				<c:forEach items="${listeRemunerationEmploye}" var="uneRemuneration">
 					<option value="${uneRemuneration.id}">${uneRemuneration.matricule}</option>
 				</c:forEach>
-			</select> <br> <br>Matricule <input type="text"
-				name="Prime Exceptionnelle" value=""><br> <input
+			</select>  <br> <br>Prime<input type="text"
+				name="PrimeExceptionnelle" value=""><br> <input
 				type="submit" value="Valider">
 		</form>
 	</center>
