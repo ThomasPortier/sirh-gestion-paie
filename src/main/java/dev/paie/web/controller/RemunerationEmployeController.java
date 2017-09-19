@@ -23,7 +23,7 @@ import dev.paie.repository.RemunerationEmployeRepository;
 import dev.paie.repository.BulletinSalaireRepository;
 
 @Controller
-@RequestMapping({"/employes","/bulletins"})
+@RequestMapping({ "/employes", "/bulletins" })
 public class RemunerationEmployeController {
 	@Autowired
 	private EntrepriseRepository entrepriseRepository;
@@ -37,8 +37,9 @@ public class RemunerationEmployeController {
 	private PeriodeRepository periodeRepository;
 	@Autowired
 	private BulletinSalaireRepository bulletinSalaireRepository;
-	
-	///////////////////////////////// EMPLOYE ////////////////////////////////////////////////
+
+	///////////////////////////////// EMPLOYE
+	///////////////////////////////// ////////////////////////////////////////////////
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	public ModelAndView creerEmploye() {
@@ -76,9 +77,10 @@ public class RemunerationEmployeController {
 		mv.addObject("listeRemunerationEmploye", remunerationEmployeRepository.findAll());
 		return mv;
 	}
-	
-	/////////////////////////////////////////// BULLETIN /////////////////////////////////////////////////////////////////
-	
+
+	/////////////////////////////////////////// BULLETIN
+	/////////////////////////////////////////// /////////////////////////////////////////////////////////////////
+
 	@RequestMapping(method = RequestMethod.GET, path = "/create")
 	public ModelAndView creerBulletin() {
 		ModelAndView mv = new ModelAndView();
@@ -89,33 +91,38 @@ public class RemunerationEmployeController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, path = "/validerFormBulletin")
 	public ModelAndView validerBulletin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		BulletinSalaire  bulletinSalaire = new BulletinSalaire();
-		
+
+		BulletinSalaire bulletinSalaire = new BulletinSalaire();
+
 		bulletinSalaire.setPeriode(periodeRepository.findOne(Integer.parseInt(request.getParameter("periodeId"))));
-		bulletinSalaire.setRemunerationEmploye(remunerationEmployeRepository.findOne(Integer.parseInt(request.getParameter("remunerationId"))));
-		System.out.println(request.getParameter("PrimeExceptionnelle"));
-		System.out.println(request.getParameter("PrimeExceptionnelle").getClass());
-		System.out.println(Integer.parseInt(request.getParameter("PrimeExceptionnelle")));
-		System.out.println(Integer.parseInt(request.getParameter("PrimeExceptionnelle")));
-		System.out.println(BigDecimal.valueOf(Integer.parseInt(request.getParameter("PrimeExceptionnelle"))));
-		System.out.println(BigDecimal.valueOf(Integer.parseInt(request.getParameter("PrimeExceptionnelle"))).getClass());
-		bulletinSalaire.setPrimeExceptionnelle(BigDecimal.valueOf(Integer.parseInt(request.getParameter("PrimeExceptionnelle"))));
-		
+		bulletinSalaire.setRemunerationEmploye(
+				remunerationEmployeRepository.findOne(Integer.parseInt(request.getParameter("remunerationId"))));
+		bulletinSalaire.setPrimeExceptionnelle(
+				BigDecimal.valueOf(Integer.parseInt(request.getParameter("PrimeExceptionnelle"))));
+
 		bulletinSalaireRepository.save(bulletinSalaire);
 
 		return new ModelAndView("redirect:" + "/mvc/bulletins/listerBulletin");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, path = "/listerBulletin")
 	public ModelAndView listerBulletins() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/bulletins/listerBulletin");
-		System.out.println(bulletinSalaireRepository.findAll());
+		// System.out.println(bulletinSalaireRepository.findAll());
+		mv.addObject("listeBulletinSalaire", bulletinSalaireRepository.findAll());
+		return mv;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path = "/visualiserBulletin")
+	public ModelAndView BulletinsSalaire() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/bulletins/visualiserBulletin");
+		// System.out.println(bulletinSalaireRepository.findAll());
 		mv.addObject("listeBulletinSalaire", bulletinSalaireRepository.findAll());
 		return mv;
 	}

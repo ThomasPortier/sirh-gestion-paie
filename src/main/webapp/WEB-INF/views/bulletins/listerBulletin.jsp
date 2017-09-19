@@ -29,8 +29,10 @@ tr:nth-child(even) {
 </head>
 <body>
 	<a href=http://localhost:8080/paie>Accueil</a> -
-	<a href=request.getContextPath()+"/mvc/employes/creer">Creer
-		Employe</a>
+	<a href=http://localhost:8080/paie/mvc/employes/creer> Creer
+		Employe - </a>
+	<a href=http://localhost:8080/paie/mvc/bulletins/create> Creer
+		Bulletin</a>
 	<center>
 		<table>
 			<tr>
@@ -47,9 +49,9 @@ tr:nth-child(even) {
 						${unBulletin.periode.dateFin}</td>
 					<td>${unBulletin.remunerationEmploye.matricule}</td>
 					<td>${unBulletin.primeExceptionnelle}</td>
-					<td> XXXX </td>
-					<td> XXXX </td>
-					<td> XXXX </td>
+					<td>XXXX</td>
+					<td>XXXX</td>
+					<td>XXXX</td>
 				</tr>
 				</option>
 				<br>
